@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div>
         App.........
-        <Button type="primary"></Button>
+        <Button type="primary">Button</Button>
       </div>
     )
   }
