@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Form, Input, Button} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {reqlogin, reqLogin} from '../../api'
 import logo from './images/logo.png'
 import './css/login.less'
 
 const {Item}=Form
 export default class Login extends Component {
-  onFinish = values => {
-    console.log('Received values of form: ', values);
+  onFinish = async values => {
+    let result=await reqLogin(values)
+    console.log(result)
   }
   render() {
     return (
@@ -59,6 +61,18 @@ export default class Login extends Component {
             required: true,
             message: '密码不能为空',
           },
+          {
+            max:12,
+            message:'密码最多不能超过12位呦'
+          },
+          {
+            min:4,
+            message:'密码最少为4位呦'
+          },
+          {
+            pattern:/^[0-9a-zA-Z_]{1,}$/,
+            message:'密码只能以数字,字母,下划线组成'
+          }
         ]}
       >
         <Input
