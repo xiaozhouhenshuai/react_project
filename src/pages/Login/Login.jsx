@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './images/logo.png'
 import './css/login.less'
@@ -11,8 +11,9 @@ export default class Login extends Component {
     return (
     <div className="login">
         <header>
-          <h1>商品管理系统</h1>
+         
           <img src={logo} alt="logo"/>
+          <h1>商品管理系统</h1>
         </header>
         <section>
           <span className="title">
@@ -52,21 +53,12 @@ export default class Login extends Component {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="#1">
-          Forgot password
-        </a>
-      </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          登录
         </Button>
-        Or <a href="#1">register now!</a>
+       
       </Form.Item>
     </Form>
         </section>
