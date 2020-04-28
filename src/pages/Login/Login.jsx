@@ -3,6 +3,8 @@ import { Form, Input, Button} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './images/logo.png'
 import './css/login.less'
+
+const {Item}=Form
 export default class Login extends Component {
   onFinish = values => {
     console.log('Received values of form: ', values);
@@ -27,23 +29,35 @@ export default class Login extends Component {
           }}
           onFinish={this.onFinish}
       >
-      <Form.Item
+      <Item
           name="username"
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: '用户名必须输入',
             },
+            {
+              max:12,
+              message:'用户名最多不能超过12位呦'
+            },
+            {
+              min:4,
+              message:'用户名最少为4位呦'
+            },
+            {
+              pattern:/^[0-9a-zA-Z_]{1,}$/,
+              message:'用户名只能以数字,字母,下划线组成'
+            }
           ]}
       >
         <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-      </Form.Item>
-      <Form.Item
+      </Item>
+      <Item
         name="password"
         rules={[
           {
             required: true,
-            message: 'Please input your Password!',
+            message: '密码不能为空',
           },
         ]}
       >
@@ -52,14 +66,14 @@ export default class Login extends Component {
           type="password"
           placeholder="Password"
         />
-      </Form.Item>
+      </Item>
 
-      <Form.Item>
+      <Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           登录
         </Button>
        
-      </Form.Item>
+      </Item>
     </Form>
         </section>
     </div>
